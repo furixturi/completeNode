@@ -1,8 +1,12 @@
 console.log('Starting app.');
 
 const fs = require('fs');
+const os = require('os');
 
-fs.appendFile('greetings.txt', 'Hello world awesome! ', function (err){
+var user = os.userInfo();
+console.log(user);
+
+fs.appendFile('greetings.txt', 'Hello ' + user.username + '!\n', function (err){
     if(err) {
         console.log(err);
     }
