@@ -3,3 +3,6 @@ Hello alabebop!
 Hello alabebop!
 Hello alabebop!
 Hello alabebop!
+Hello undefined, you are [object Object] years old!
+Hello undefined, you are 25 years old!
+Hello alabebop, you are 25 years old!
