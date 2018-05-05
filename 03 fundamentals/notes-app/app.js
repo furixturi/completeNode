@@ -6,7 +6,22 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
-const argv = yargs.argv;
+const argv = yargs
+    .command('add', 'Add a new note', {
+        title: {
+            describe: 'Title of note',
+            demand: true,
+            alias: 't' // So user can use -t as a shorthand for --title
+        },
+        body: {
+            describe: 'Body of the note',
+            demand: true,
+            alias: 'b'
+        }
+    })
+    .command('list', "List all notes")
+    .help() // So user can use --help flag to get help
+    .argv;
 const command = argv._[0];
 
 switch(command){
