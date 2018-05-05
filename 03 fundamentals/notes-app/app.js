@@ -11,7 +11,9 @@ const command = argv._[0];
 
 switch(command){
     case 'add':
-        notes.addNote(argv.title, argv.body);
+        const note = notes.addNote(argv.title, argv.body);
+        console.log(note ? '========= New note added ========' : 
+            '========== Adding note failed =========')
         return;
     case 'list':
         notes.getAll();
