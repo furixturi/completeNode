@@ -6,10 +6,10 @@ person.age = 25;
 
 debugger; // debug> c //will go directly to this line
 
-person.name = 'Mike';
+person.name = 'Charllotte';
 console.log(person)
 
-// to debug, run 
+/* Debug with terminal */
 // $node inspect debugging.js [some parameters]
 // or $nodemon inspect debugging.js [some parameters]
 
@@ -24,3 +24,23 @@ console.log(person)
 // > person.name = "Tom"
 
 // * to get out of repl mode: ctrl-c
+
+
+
+/* Debug with Chrom dedicated dev tool */
+// $node inspect-brk debugging.js [parameters]
+// $nodemon inspect-brk debugging.js [parameters]
+
+/* Then go to chrome, type in address bar:
+chrome://inspect
+
+Then click "Open dedicated DevTools for Node" link
+
+DevTools will open and debugging.js is shown in "Sources tab"
+The console below (can toglle show and hide with Esc key) acts like the "repl" console
+
+Right sidebar:
+1. Blue play button (Resume script execution - F8) acts like "c" command
+2. Arrow to the right button (Step - F9) acts like the "n" command
+
+*/
