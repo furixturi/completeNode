@@ -8,23 +8,23 @@ const notes = require('./notes.js');
 
 const argv = yargs.argv;
 
-console.log("process.argv: ", process.argv);
 console.log("yargs.argv: ", yargs.argv);
 
-// switch(command){
-//     case 'add':
-//         console.log("Adding a new note");
-//         return;
-//     case 'list':
-//         console.log("Listing all notes");
-//         return;
-//     case 'read':
-//         console.log('Reading note');
-//         return;
-//     case 'remove':
-//         console.log('Removing note');
-//         return;
-//     default:
-//         console.log("Command not recognized");
-//         return;
-// }
+const command = yargs.argv['_'][0];
+switch(command){
+    case 'add':
+        notes.addNote(yargs.argv.title, yargs.argv.body);
+        return;
+    case 'list':
+        notes.getAll();
+        return;
+    case 'read':
+        notes.getNote(yargs.argv.title);
+        return;
+    case 'remove':
+        notes.removeNote(yargs.argv.title);
+        return;
+    default:
+        console.log("Command not recognized");
+        return;
+}
