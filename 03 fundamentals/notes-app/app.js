@@ -2,25 +2,29 @@ console.log('starting app index.js');
 
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
+
 const notes = require('./notes.js');
 
-let command = process.argv[2];
-console.log('Command: ', command);
+const argv = yargs.argv;
 
-switch(command){
-    case 'add':
-        console.log("Adding a new note");
-        return;
-    case 'list':
-        console.log("Listing all notes");
-        return;
-    case 'read':
-        console.log('Reading note');
-        return;
-    case 'remove':
-        console.log('Removing note');
-        return;
-    default:
-        console.log("Command not recognized");
-        return;
-}
+console.log("process.argv: ", process.argv);
+console.log("yargs.argv: ", yargs.argv);
+
+// switch(command){
+//     case 'add':
+//         console.log("Adding a new note");
+//         return;
+//     case 'list':
+//         console.log("Listing all notes");
+//         return;
+//     case 'read':
+//         console.log('Reading note');
+//         return;
+//     case 'remove':
+//         console.log('Removing note');
+//         return;
+//     default:
+//         console.log("Command not recognized");
+//         return;
+// }
