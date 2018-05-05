@@ -19,9 +19,9 @@ var originalNote = {
     body: 'Some body texts'
 };
 var originalNoteString = JSON.stringify(originalNote);
-fs.writeFileSync('notes.js', originalNoteString);
+fs.writeFileSync('notes.json', originalNoteString);
 
-var noteString = fs.readFileSync('notes.js');
+var noteString = fs.readFileSync('notes.json');
 var note = JSON.parse(noteString);
 console.log('=> typeof note:\n', typeof note)
 console.log('=> content of note:\n', note)
