@@ -4,4 +4,4 @@ const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
 
-console.log(_.isString('Me'))
+console.log(_.isString(true))

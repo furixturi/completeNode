@@ -4,11 +4,13 @@
   "description": "",
   "main": "app　.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "nodemon": "^1.17.3"
   }
 }
