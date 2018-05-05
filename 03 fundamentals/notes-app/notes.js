@@ -37,6 +37,10 @@ const getAll = () => {
 
 const removeNote = (title) => {
     console.log('========= Removing note ========\n', title)
+    const notes = fetchNotes();
+    const filteredNotes = notes.filter(note => note.title !== title);
+    saveNotes(filteredNotes);
+    console.log('Removed', notes.length - filteredNotes.length, 'note');
 }
 
 const getNote = (title) => {
