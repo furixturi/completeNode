@@ -1,8 +1,8 @@
 const request = require("request");
 const yargs = require("yargs");
 
-const { getGeoLocation } = require('./geocode');
-const { getWeather } = require('./weather');
+const geocode = require('./geocode');
+const weather = require('./weather');
 
 const argv = yargs
   .options({
@@ -16,6 +16,4 @@ const argv = yargs
   .help()
   .alias("help", "h").argv;
 
-const addressInput = argv.address;
-
-getGeoLocation(addressInput, getWeather);
+geocode.getGeoLocation(argv.address, weather.getWeather);

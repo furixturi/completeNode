@@ -25,9 +25,9 @@ module.exports.getWeather = (latitude, longitude) => {
         }
       } else {
         const { summary, temperature } = body.currently;
-        console.log(`${summary}, ${temperature} degrees`);
+        console.log(`> ${summary}, ${temperature} degrees`);
       }
     }
   );
-  
+
 };
