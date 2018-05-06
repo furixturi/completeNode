@@ -25,7 +25,10 @@ request(
     json: true
   },
   (err, res, body) => {
-    console.log("error: ", err);
+    if(err) {
+      console.log("Server Error: ", err);
+      return;
+    }
     // console.log(JSON.stringify(res, undefined, 2));
 
     if (body.status === "OK") {
