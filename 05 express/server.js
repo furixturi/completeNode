@@ -1,8 +1,9 @@
 const express = require("express");
+const hbs = require('hbs');
+const fs = require("fs");
 
 const app = express();
-
-const fs = require("fs");
+app.set('view engine', 'hbs');
 
 
 // Custom middleware
@@ -33,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.send("About page");
+  res.render('about.hbs');
 });
 
 app.listen(3000, () => {
