@@ -4,9 +4,6 @@ const app = express();
 
 const fs = require("fs");
 
-// app.use let us use middleware
-// The built-in express.static middleware takes the absolute path to the folder
-app.use(express.static(__dirname + "/public"));
 
 // Custom middleware
 app.use((req, res, next) => {
@@ -21,6 +18,11 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+// app.use let us use middleware
+// The built-in express.static middleware takes the absolute path to the folder
+app.use(express.static(__dirname + "/public"));
+
 
 app.get("/", (req, res) => {
   // res.send("<h1>Hello express!</h1>");
