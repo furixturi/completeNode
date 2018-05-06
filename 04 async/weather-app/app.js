@@ -16,16 +16,18 @@ const argv = yargs
 const addressInput = argv.address;
 const addressURIEncoded = encodeURIComponent(addressInput);
 const apiKey = "AIzaSyCyoH0zQlgSU6DjtQGtVvyWtiImXYYVlWE";
-const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${addressURIEncoded}&key=${apiKey}`;
-console.log(url);
+const geocodeAPI = `https://maps.googleapis.com/maps/api/geocode/json?address=${addressURIEncoded}&key=${apiKey}`;
+const weatherAPIKey = "7ee9610ef9246e35fb7a298e6023a3b6";
+const weatherAPI = `https://api.darksky.net/forecast/${weatherAPIKey}`;
+const weatherAPIParams = 'units=si'
 
 request(
   {
-    url: url,
+    url: geocodeAPI,
     json: true
   },
   (err, res, body) => {
-    if(err) {
+    if (err) {
       console.log("Server Error: ", err);
       return;
     }
@@ -34,12 +36,28 @@ request(
     if (body.status === "OK") {
       console.log("============= OjbK ============");
       const result = body.results[0];
+      const latitude = result.geometry.location.lat;
+      const longitude = result.geometry.location.lng;
+
+      
       console.log("address:", result.formatted_address);
+      console.log("latitude:", latitude, "longitude:", longitude);
       console.log(
-        "latitude:",
-        result.geometry.location.lat,
-        "longitude:",
-        result.geometry.location.lng
+        "======== Now getting some weather reports for that place ======="
+      );
+      request(
+        {
+          url: `${weatherAPI}/${latitude},${longitude}?${weatherAPIParams}`,
+          json: true
+        },
+        (err, res, body) => {
+          if(err) {
+            console.log('Calling weather API server error: ', err)
+          } else {
+            const { summary, temperature } = body.currently;
+            console.log(`${summary}, ${temperature} degrees`);
+          }
+        }
       );
     } else {
       console.log("========= Panic!!! =========");
