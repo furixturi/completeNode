@@ -3,10 +3,13 @@ const hbs = require('hbs');
 const fs = require("fs");
 
 const app = express();
+
+// To let nodemon watch hbs changes: 
+// $ nodemon server.js -e js,hbs
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 
-// Custom middleware
 app.use((req, res, next) => {
   const now = new Date().toString();
   const log = `Request: ${now}\n> method: ${req.method}\n> url: ${req.url}\n`;
@@ -20,13 +23,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use let us use middleware
-// The built-in express.static middleware takes the absolute path to the folder
 app.use(express.static(__dirname + "/public"));
 
 
 app.get("/", (req, res) => {
-  // res.send("<h1>Hello express!</h1>");
   res.render('home.hbs', {
     pageTitle: 'Home',
     currentYear: new Date().getFullYear(),
