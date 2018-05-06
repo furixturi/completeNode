@@ -14,4 +14,8 @@ app.get('/about', (req, res) => {
   res.send('About page')
 });
 
+// app.use let us use middleware
+// The built-in express.static middleware takes the absolute path to the folder
+app.use(express.static(__dirname + '/public'))
+
 app.listen(3000);
