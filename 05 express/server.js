@@ -11,6 +11,8 @@ app.set("view engine", "hbs");
 
 hbs.registerHelper("getCurrentYear", () => new Date().getFullYear());
 
+hbs.registerHelper("screamIt", (text) => text.toUpperCase());
+
 app.use((req, res, next) => {
   const now = new Date().toString();
   const log = `Request: ${now}\n> method: ${req.method}\n> url: ${req.url}\n`;
