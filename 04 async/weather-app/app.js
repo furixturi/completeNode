@@ -1,5 +1,5 @@
 const request = require('request');
-
+const apiKey = "AIzaSyCyoH0zQlgSU6DjtQGtVvyWtiImXYYVlWE";
 request(
   {
     url:
@@ -7,6 +7,6 @@ request(
     json: true
   },
   (err, res, body) => {
-    console.log(JSON.stringify(body, undefined, 2));
+    console.log(JSON.stringify(res, undefined, 2));
   }
 );
