@@ -18,4 +18,6 @@ app.get('/about', (req, res) => {
 // The built-in express.static middleware takes the absolute path to the folder
 app.use(express.static(__dirname + '/public'))
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('Server is up on port 3000');
+});
