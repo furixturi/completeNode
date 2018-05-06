@@ -1,14 +1,15 @@
 const express = require("express");
-const hbs = require('hbs');
+const hbs = require("hbs");
 const fs = require("fs");
 
 const app = express();
 
-// To let nodemon watch hbs changes: 
+// To let nodemon watch hbs changes:
 // $ nodemon server.js -e js,hbs
-hbs.registerPartials(__dirname + '/views/partials');
-app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + "/views/partials");
+app.set("view engine", "hbs");
 
+hbs.registerHelper("getCurrentYear", () => new Date().getFullYear());
 
 app.use((req, res, next) => {
   const now = new Date().toString();
@@ -25,19 +26,16 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + "/public"));
 
-
 app.get("/", (req, res) => {
-  res.render('home.hbs', {
-    pageTitle: 'Home',
-    currentYear: new Date().getFullYear(),
-    welcomeMessage: 'Welcome!'
-  })
+  res.render("home.hbs", {
+    pageTitle: "Home",
+    welcomeMessage: "Welcome!"
+  });
 });
 
 app.get("/about", (req, res) => {
-  res.render('about.hbs', {
-    pageTitle: 'About Page',
-    currentYear: new Date().getFullYear()
+  res.render("about.hbs", {
+    pageTitle: "About Page"
   });
 });
 
