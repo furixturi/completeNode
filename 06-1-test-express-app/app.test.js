@@ -1,5 +1,5 @@
 const expect = require('expect');
-const jest = require('jest');
+// const jest = require('jest');
 const app = require('./app');
 
 describe('App', () => {
