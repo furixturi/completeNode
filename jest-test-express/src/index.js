@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-const sum = require('./sum');
-
-console.log(sum(1, 2).toString());
-
 const express = require('express');
 
+const hello = require('./hello');
+const handleListen = require('./handleListen');
+
+const PORT = 3003;
 const app = express();
-app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(3003, () => console.log('Example app listening on 3003!'));
+app.get('/', hello);
+app.listen(PORT, handleListen(console.log, PORT));
